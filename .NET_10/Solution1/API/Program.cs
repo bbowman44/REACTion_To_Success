@@ -33,6 +33,23 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+var allowedOrigins = builder.Configuration.GetSection("CorsOrigin").Get<string[]>();
+
+if (allowedOrigins == null)
+{
+    throw new InvalidOperationException("CORS origins are not configured. Please set the 'CorsOrigin' section in appsettings.json.");
+}
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("FrontEnd", builder =>
+    {
+        builder.WithOrigins(allowedOrigins)
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
 var environment = app.Configuration.GetValue<string>("Environment");
@@ -41,6 +58,7 @@ if (environment == "Development")
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors("FrontEnd");
 }
 
 app.UseHttpsRedirection();
