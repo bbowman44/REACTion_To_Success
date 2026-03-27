@@ -42,6 +42,9 @@ ScaffoldingReadMe.txt
 CodeCoverage/
 .vs/
 
+#Frontend npm/node_modules
+node_modules/
+
 # MSBuild Binary and Structured Log
 *.binlog
 
