@@ -52,6 +52,20 @@ body {
     fill: white;
 }
 
+.nav-links {
+    display: flex;
+    gap: var(--spacing-small);
+    align-items: center;
+}
+
+.nav-links a:hover {
+    color: var(--tertiary-page-color);
+}
+
+.nav-links a:active {
+    color: var(--accent-color-purple);
+}
+
 .endpoint-link {
     display: flex;
     flex-direction: column;
@@ -106,15 +120,14 @@ a {
     list-style: none;
 }
 
-.nav-links {
-    display: flex;
-    gap: var(--spacing-small);
-    align-items: center;
+.sidebar-nav a:hover{
+    color: var(--tertiary-page-color);
+    text-shadow: 4px 4px 5px var(--accent-color-purple);
 }
 
-.search-bar {
-    display: flex;
-    align-items: center;
+.sidebar-nav a:active{
+    color: var(--accent-color-purple);
+    text-shadow: 4px 4px 5px var(--accent-color-purple);
 }
 
 /* 
