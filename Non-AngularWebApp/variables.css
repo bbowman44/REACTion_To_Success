@@ -1,13 +1,12 @@
 :root {
     /* Define colors for standardization across the application */
-    --primary-page-color: #16804d;
-    --secondary-page-color: #55A1A0;
+    --primary-page-color: #18191b;
+    --secondary-page-color: #212426;
     --tertiary-page-color: #E0624C;
-    --footer-page-color: #aaa;
 
-    --accent-color-yellow: #E0E04C;
-    --accent-color-blue: #4C96E0;
-    --accent-color-purple: #964CE0;
+    --accent-color-yellow: #CAE04C;
+    --accent-color-blue: #4CCAE0;
+    --accent-color-purple: #624CE0;
 
     /* Define spacing variables for consistent padding and margins */
     --spacing-xsmall: 0.5rem;
@@ -24,4 +23,8 @@
 
     /* Define base font family for the application */
     --default-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    /* content and tag variables */
+    --header-height: 4rem;
+    --header-page-z-index: 100;
 }

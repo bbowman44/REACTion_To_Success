@@ -1,7 +1,7 @@
 html, body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    /* height: 100%; */
+    /* display: flex; */
+    /* flex-direction: column; */
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     color: white;
@@ -9,7 +9,7 @@ html, body {
 }
 
 body {
-    background-color: #18191b;
+    background-color: var(--primary-page-color);
 }
 
 .body-container {
@@ -17,32 +17,36 @@ body {
     flex: 1;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 var(--spacing-small);
 }
 
 .header-navigation {
     display: flex;
-    background-color: #212426;
-    /* background-color: #55a17a; secondary color maybe or primary not sure*/
+    background-color: var(--secondary-page-color);
     justify-content: center;
+    height: var(--header-height);
+    position: sticky;
+    top: 0;
+    z-index: var(--header-page-z-index);
+    box-shadow: 0px 1px 15px var(--tertiary-page-color);
 }
 
 .header-container {
     height: 100%;
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 var(--spacing-small);
 }
 
 .nav-list-header {
     display: flex;
-    gap: 25px;
+    gap: var(--spacing-medium);
     align-items: stretch;
     flex-wrap: wrap;
 }
 
 .nav-image-home{
-    padding: 0.5rem;
+    padding: var(--spacing-xsmall);
     width: 64px;
     height: 64px;
     fill: white;
@@ -51,34 +55,28 @@ body {
 .endpoint-link {
     display: flex;
     flex-direction: column;
-    flex-shrink: 0;
     flex: 1;
-    /* box-shadow: 5px 5px 5px grey; */
-
-    /* border-right: 1px solid black;
-    border-bottom: 1px solid black; */
-    
-}
-
-.endpoint-link {
-    padding: 1rem;
+    padding: var(--spacing-small);
     text-shadow: 4px 4px 5px #aaa;
+    height: fit-content;
+    position: sticky;
+    top: var(--header-height);
 }
 
 .main-content-body {
-    padding: 1rem;
+    padding: var(--spacing-small);
     display: flex;
     flex: 3;
     flex-direction: column;
 }
 
 .footer-body {
-    padding: 1rem;
-    background-color: #212426;
+    padding: var(--spacing-small);
+    background-color: var(--secondary-page-color);
 }
 
 .footer-container {
-    padding: 0 1rem;
+    padding: 0 var(--spacing-small);
     display: flex;
     justify-content: space-around;
     margin: 0 auto;
@@ -88,14 +86,14 @@ body {
 .footer-links {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--spacing-medium);
     align-items: center;
 }
 
 .footer-contact-info {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--spacing-xsmall);
     align-items: center;
 }
 
@@ -110,7 +108,7 @@ a {
 
 .nav-links {
     display: flex;
-    gap: 1rem;
+    gap: var(--spacing-small);
     align-items: center;
 }
 
