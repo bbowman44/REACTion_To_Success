@@ -1,6 +1,13 @@
 :root {
     /* Define colors for standardization across the application */
-    --primary-color: #16804d;
+    --primary-page-color: #16804d;
+    --secondary-page-color: #55A1A0;
+    --tertiary-page-color: #E0624C;
+    --footer-page-color: #aaa;
+
+    --accent-color-yellow: #E0E04C;
+    --accent-color-blue: #4C96E0;
+    --accent-color-purple: #964CE0;
 
     /* Define spacing variables for consistent padding and margins */
     --spacing-xsmall: 0.5rem;
