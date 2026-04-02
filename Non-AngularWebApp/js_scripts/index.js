@@ -1,18 +1,14 @@
 //imports of modules and components go here
 
-//global constant variables go here
 let currentTheme = "dark";
 
-//global state variables go here
 
-//any dom element references go here
 const toggleThemeButton = document.getElementById("darkModeToggle");
 
-//event listeners go here
 toggleThemeButton.addEventListener("click", () => toggleTheme());
 
 Init();
-//init function goes here
+
 function Init() {
     console.log("Hello World!");
     console.log(toggleThemeButton);
@@ -20,10 +16,28 @@ function Init() {
 
 function toggleTheme() {
     console.log("Button Clicked!");
-    /*  set the backgroun color of the header, footer, and body to their white counter parts
-        be sure to try and use a local cache to store a variable of some sort about the current theme 
-        use that variable in storage to check what is currently being used and do the opposite*/
-}
-//classes and public functions go here
 
-//private functions go here
+    if (currentTheme === "dark")
+        darkTheme();
+    else if (currentTheme === "light")
+        lightTheme();
+
+    //fix this up to use local cache and to use the proper colors. Maybe use another variable in css or something, not sure.
+    //store variable in local cache storage to tell what the current theme is on load
+    //
+    //also code up the way you would do it if you had to get them by elementid and change the color directly.
+}
+
+function darkTheme() {
+    document.documentElement.style.setProperty("--primary-page-color", "white");
+    document.documentElement.style.setProperty("--secondary-page-color", "lightgray");
+    document.documentElement.style.setProperty("--primary-font-color", "black");
+    currentTheme = "light";
+}
+
+function lightTheme() {
+    document.documentElement.style.setProperty("--primary-page-color", "black");
+    document.documentElement.style.setProperty("--secondary-page-color", "darkgray");
+    document.documentElement.style.setProperty("--primary-font-color", "white");
+    currentTheme = "dark";
+}

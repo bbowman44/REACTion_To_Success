@@ -4,7 +4,7 @@ html, body {
     /* flex-direction: column; */
     font-family: 'Inter', sans-serif;
     font-weight: 500;
-    color: white;
+    color: var(--primary-font-color);
     margin: 0;
 }
 

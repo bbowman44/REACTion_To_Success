@@ -8,6 +8,8 @@
     --accent-color-blue: #4CCAE0;
     --accent-color-purple: #624CE0;
 
+    --primary-font-color: #E0E0E0;
+
     /* Define spacing variables for consistent padding and margins */
     --spacing-xsmall: 0.5rem;
     --spacing-small: 1rem;
