@@ -16,6 +16,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Twisted.Domain.csproj" />
+    <ProjectReference Include="..\Twisted.Infrastructure\Twisted.Infrastructure.csproj" />
+    <ProjectReference Include="..\Twisted.UseCases\Twisted.UseCases.csproj" />
   </ItemGroup>
 
 </Project>
