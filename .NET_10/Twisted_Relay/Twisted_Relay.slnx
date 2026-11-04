@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="API/Twisted.API.csproj" />
+  <Project Path="Domain/Twisted.Domain.csproj" />
+  <Project Path="Twisted.Infrastructure/Twisted.Infrastructure.csproj" />
+  <Project Path="Twisted.UseCases/Twisted.UseCases.csproj" />
+</Solution>
