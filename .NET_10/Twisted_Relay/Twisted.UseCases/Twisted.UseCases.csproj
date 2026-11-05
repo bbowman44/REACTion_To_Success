@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Mappings\DTOMappings\" />
+    <Folder Include="Mappings\EndpointRequestMappings\" />
+  </ItemGroup>
+
 </Project>

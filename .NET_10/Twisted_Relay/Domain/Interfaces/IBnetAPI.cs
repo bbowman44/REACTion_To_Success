@@ -1,9 +1,10 @@
-﻿namespace Twisted.Infrastructure.ExternalAPIs
+﻿using Twisted.Domain.DTOs;
+
+namespace Twisted.Infrastructure.ExternalAPIs
 {
     public interface IBnetAPI
     {
-        Task<int> GetTokenInformation();
-        Task<int> GetTokenInformation2();
-        Task<int> GetWoWTokenPrice();
+        Task<string> GetWoWTokenPrice(BnetTokenDTO tokenInformation, string space, string locale);
+        Task<BnetTokenDTO> GetTokenInformation();
     }
 }
