@@ -21,10 +21,10 @@ using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<TwistedDBContext>();
 
-    if(!dbContext.Database.CanConnect())
-    {
-        throw new NotImplementedException("Can't connect to the TwistedDB, please check connection string and all other configurations");
-    }
+    //if(!dbContext.Database.CanConnect())
+    //{
+    //    throw new NotImplementedException("Can't connect to the TwistedDB, please check connection string and all other configurations");
+    //}
     //dbContext.Database.Migrate();
 }
 

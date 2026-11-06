@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.EntityFrameworkCore;
+using Twisted.Domain.Entities;
 
 namespace Twisted.Infrastructure.DBContext
 {
@@ -10,5 +12,7 @@ namespace Twisted.Infrastructure.DBContext
         public TwistedDBContext(DbContextOptions<TwistedDBContext> options) : base(options)
         {
         }
+
+        public DbSet<BnetTokenInfo> BnetTokenInfo { get; set; }
     }
 }

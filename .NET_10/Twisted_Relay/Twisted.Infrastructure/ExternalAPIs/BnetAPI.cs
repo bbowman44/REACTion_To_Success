@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Twisted.Domain.DTOs;
 using Twisted.Domain.Exceptions;
@@ -8,7 +9,11 @@ namespace Twisted.Infrastructure.ExternalAPIs
 {
     public class BnetAPI : IBnetAPI
     {
-        //private HttpClient client = new HttpClient();
+        private readonly IConfiguration _configuration;
+        public BnetAPI(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         public async Task<string> GetWoWTokenPrice(BnetTokenDTO tokenInformation, string space, string locale)
         {
@@ -44,10 +49,12 @@ namespace Twisted.Infrastructure.ExternalAPIs
         {
             HttpClient client = new HttpClient();
 
-            var accessTokenURL = "https://oauth.battle.net/token";
-            var clientId = "asdf";
-            var clientSecret = "asdf";
+            var accessTokenURL = "https://oauth.battle.net/token";// I can set this as well in the secrets appsetting.json file and pull it so that it can be changed
+            var clientId = _configuration["BnetCredentials:BnetClientId"];
+            var clientSecret = _configuration["BnetCredentials:BnetClientSecret"];
             var grant_type = "client_credentials";
+
+            //now that I implemented the secrets manager on local I should check those values to make sure they are not null before using them.
 
             //the mapping of the form needs to move into the domain with the business logic.
             //all mappings should be in their own file if possible in the domain layer. 
