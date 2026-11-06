@@ -1,12 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Text.Json;
 using Twisted.Domain.DTOs;
 using Twisted.Domain.Exceptions;
+using Twisted.Infrastructure.Interfaces;
 
 namespace Twisted.Infrastructure.ExternalAPIs
 {

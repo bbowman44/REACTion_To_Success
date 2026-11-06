@@ -1,6 +1,6 @@
 ﻿using Twisted.Domain.DTOs;
 
-namespace Twisted.Infrastructure.ExternalAPIs
+namespace Twisted.Infrastructure.Interfaces
 {
     public interface IBnetAPI
     {

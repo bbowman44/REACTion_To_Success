@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Twisted.API.Contracts.Test;
 using Twisted.Domain;
-using Twisted.Domain.DTOs;
-using Twisted.Infrastructure.ExternalAPIs;
+using Twisted.Infrastructure.Interfaces;
 
 namespace Twisted.API.Controllers
 {
@@ -41,6 +40,17 @@ namespace Twisted.API.Controllers
         public async Task<string> TokenPrice()
         {
             var tokenInformation = await _repository.GetTokenInformation();
+
+            //after we get the token information we should store it in the database with a timestamp so we can check that it's valid
+            //this will help us avoiding unecessary calls to the oauth2 endpoint and the token can stay the same as well for a while.
+
+            //we should also encrypt this information before we store it in the DB as well.
+            //would need to figure out how to encrypt it but more importantly how to decrypt it and if a key is needed and where to store it.
+
+            //we should also authorize this endpoint to prevent anyone from calling it and using our api key and token.
+            //very important if not the most important aspect
+
+            //this should also call the handler that can route all the information to the correct places like the external api, the database, the encrypt/decrypt functions, etc.
 
             var tokenPrice = await _repository.GetWoWTokenPrice(tokenInformation, "dynamic-us", "en_US");
 
