@@ -1,5 +1,9 @@
-﻿using Twisted.Infrastructure.ExternalAPIs;
+﻿using Twisted.Domain.Interfaces;
+using Twisted.Domain.Services;
+using Twisted.Infrastructure.ExternalAPIs;
 using Twisted.Infrastructure.Interfaces;
+using Twisted.Infrastructure.Repositories;
+using Twisted.UseCases.Handlers;
 
 namespace Twisted.API
 {
@@ -8,6 +12,9 @@ namespace Twisted.API
         public static IServiceCollection AddTwistedServices(this IServiceCollection services)
         {
             services.AddScoped<IBnetAPI, BnetAPI>();
+            services.AddScoped<IBnetAPIServices, BnetAPIServices>();
+            services.AddScoped<ICredentialsRepository, CredentialsRepository>();
+            services.AddScoped<IBnetAPIHandler, BnetAPIHandler>();
             return services;
         }
     }

@@ -45,5 +45,6 @@
  https://learn.microsoft.com/en-us/aspnet/core/data/ef-mvc/migrations?view=aspnetcore-10.0 - Code First Migrations
  https://learn.microsoft.com/en-us/ef/ef6/modeling/code-first/data-annotations - Data Annotaions for Entities
 
+ ## Using static classes
 
-
+ I decided to use a static class instead of the DB for storing the OAuth2 token from Bnet. I will probably do that for all token since storing them in kind of unsecure and it doesn't make a lot of sense to do that.

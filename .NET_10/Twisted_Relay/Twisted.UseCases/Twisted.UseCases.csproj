@@ -12,4 +12,8 @@
     <Folder Include="Mappings\EndpointRequestMappings\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Twisted.Infrastructure\Twisted.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

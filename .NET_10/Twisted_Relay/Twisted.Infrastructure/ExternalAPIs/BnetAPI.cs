@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Twisted.Domain.DTOs;
 using Twisted.Domain.Exceptions;
+using Twisted.Domain.Models;
 using Twisted.Infrastructure.Interfaces;
 
 namespace Twisted.Infrastructure.ExternalAPIs
@@ -45,42 +46,31 @@ namespace Twisted.Infrastructure.ExternalAPIs
                 throw new Exception("Price not found in API response");
         }
 
-        public async Task<BnetTokenDTO> GetTokenInformation()
+        public async Task<BnetTokenDTO> GetTokenInformation(Dictionary<string, string> tokenForm, string accessTokenURL)
         {
             HttpClient client = new HttpClient();
 
-            var accessTokenURL = "https://oauth.battle.net/token";// I can set this as well in the secrets appsetting.json file and pull it so that it can be changed
-            var clientId = _configuration["BnetCredentials:BnetClientId"];
-            var clientSecret = _configuration["BnetCredentials:BnetClientSecret"];
-            var grant_type = "client_credentials";
-
-            //now that I implemented the secrets manager on local I should check those values to make sure they are not null before using them.
-
-            //the mapping of the form needs to move into the domain with the business logic.
-            //all mappings should be in their own file if possible in the domain layer. 
-            var form = new Dictionary<string, string>
-            {
-                { "grant_type", grant_type },
-                { "client_id", clientId },
-                { "client_secret", clientSecret }
-            };
-
-            HttpResponseMessage response = await client.PostAsync(accessTokenURL, new FormUrlEncodedContent(form));
+            HttpResponseMessage response = await client.PostAsync(accessTokenURL, new FormUrlEncodedContent(tokenForm));
             var jsonContent = await response.Content.ReadAsStringAsync();
 
-            //be sure to check the response status code here as well.
+            BnetTokenModel.RetrivalTime = DateTime.Now; //set the retrival time as soon as possible
+
             if (!response.IsSuccessStatusCode)
             {
                 throw new APIFailureException($"Error retrieving token information: {response.StatusCode} - {jsonContent}");
             }
 
-            //try to deserialize it into a dynamic object with all the fields from the token endpoint.
             var bnetTokenDTO = JsonConvert.DeserializeObject<BnetTokenDTO>(jsonContent);
 
             if(bnetTokenDTO == null)
             {
                 throw new APIFailureException($"Error deserializing token information, null bnetTokenDTO: {jsonContent}");
             }
+
+            BnetTokenModel.AccessToken = bnetTokenDTO.access_token;
+            BnetTokenModel.TokenType = bnetTokenDTO.token_type;
+            BnetTokenModel.SecondsUntilExpiration = bnetTokenDTO.expires_in;
+            BnetTokenModel.Sub = bnetTokenDTO.sub;
 
             return bnetTokenDTO;
         }

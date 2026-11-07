@@ -5,6 +5,6 @@ namespace Twisted.Infrastructure.Interfaces
     public interface IBnetAPI
     {
         Task<string> GetWoWTokenPrice(BnetTokenDTO tokenInformation, string space, string locale);
-        Task<BnetTokenDTO> GetTokenInformation();
+        Task<BnetTokenDTO> GetTokenInformation(Dictionary<string, string> tokenForm, string accessTokenURL);
     }
 }
