@@ -15,6 +15,7 @@ namespace Twisted.API
             services.AddScoped<IBnetAPIServices, BnetAPIServices>();
             services.AddScoped<ICredentialsRepository, CredentialsRepository>();
             services.AddScoped<IBnetAPIHandler, BnetAPIHandler>();
+            services.AddScoped<IEncryptionHandler, EncryptionHandler>();
             return services;
         }
     }
