@@ -48,3 +48,12 @@
  ## Using static classes
 
  I decided to use a static class instead of the DB for storing the OAuth2 token from Bnet. I will probably do that for all token since storing them in kind of unsecure and it doesn't make a lot of sense to do that.
+
+ ## Notes about how to use AES and RSA encryption
+
+ If you ever forget just F1 on the aes and rsa object and it takes you to the documentation to view how it works with some snippets
+
+ https://learn.microsoft.com/en-us/dotnet/standard/security/encrypting-data - encrypting
+ https://learn.microsoft.com/en-us/dotnet/standard/security/decrypting-data - decrypting
+ https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.aes?view=net-10.0&devlangs=csharp&f1url=%3FappId%3DDev18IDEF1%26l%3DEN-US%26k%3Dk%28System.Security.Cryptography.Aes%29%3Bk%28DevLang-csharp%29%26rd%3Dtrue - aes calss
+ insert rsa class when I get there

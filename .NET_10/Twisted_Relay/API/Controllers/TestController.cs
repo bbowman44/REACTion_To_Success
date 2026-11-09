@@ -20,7 +20,7 @@ namespace Twisted.API.Controllers
         {
             //need to call the symmetric encryption function
             var testResult = _encryptHandler.SymmetricEncrpytionTest();
-            return "test controller results";
+            return testResult;
         }
 
         [HttpGet]
