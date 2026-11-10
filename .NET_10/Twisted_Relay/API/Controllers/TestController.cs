@@ -14,6 +14,9 @@ namespace Twisted.API.Controllers
             _encryptHandler = encryptionHandler;
         }
 
+        //I should also try to implement a hashing method as well for passwords and what not
+        //I didn't know there was a difference between encryption and hashing!
+
         [HttpGet]
         [Route("SymmetricEncrypt")]
         public async Task<string> SymmetricEncrpytionTest()
@@ -24,12 +27,21 @@ namespace Twisted.API.Controllers
         }
 
         [HttpGet]
+        [Route("Hashing")]
+        public async Task<string> HashingTest()
+        {
+            //need to call the symmetric encryption function
+            var testResult = _encryptHandler.HashTest();
+            return testResult;
+        }
+
+        [HttpGet]
         [Route("AsymmetricEncrypt")]
         public async Task<string> AsymmetricEncrpytionTest()
         {
             //need to call the 
-            var testResult = _encryptHandler.AsymmetricEncrpytionTest();
-            return "test controller results";
+            var testResult = _encryptHandler.AsymmetricEncrpytionTest("This is a test of rsa asymmtetric encryption");
+            return testResult;
         }
     }
 }

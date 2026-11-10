@@ -57,3 +57,8 @@
  https://learn.microsoft.com/en-us/dotnet/standard/security/decrypting-data - decrypting
  https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.aes?view=net-10.0&devlangs=csharp&f1url=%3FappId%3DDev18IDEF1%26l%3DEN-US%26k%3Dk%28System.Security.Cryptography.Aes%29%3Bk%28DevLang-csharp%29%26rd%3Dtrue - aes calss
  insert rsa class when I get there
+
+ ## Information and documents about hashing
+
+ https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.ipasswordhasher-1?view=aspnetcore-10.0&devlangs=csharp&f1url=%3FappId%3DDev18IDEF1%26l%3DEN-US%26k%3Dk%28Microsoft.AspNetCore.Identity.IPasswordHasher%601%29%3Bk%28DevLang-csharp%29%26rd%3Dtrue
+ https://learn.microsoft.com/en-us/aspnet/core/security/data-protection/consumer-apis/password-hashing?view=aspnetcore-10.0

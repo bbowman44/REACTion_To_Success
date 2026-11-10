@@ -2,7 +2,8 @@
 {
     public interface IEncryptionHandler
     {
-        string AsymmetricEncrpytionTest();
         string SymmetricEncrpytionTest();
+        string AsymmetricEncrpytionTest(string testStringInput);
+        string HashTest();
     }
 }
