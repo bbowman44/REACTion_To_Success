@@ -7,7 +7,7 @@ namespace Twisted.API.Attributes
 {
     /// <summary>
     /// Rejects the request with a 401 unless the "Twisted-Key" header matches the configured "ApiKey".
-    /// Apply to a controller or an individual action with [ApiKey].
+    /// Apply to a controller or an individual action with [ApiKey]. Adding here for clarity on what it does so I remember when I hover
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class ApiKeyAttribute : Attribute, IAuthorizationFilter

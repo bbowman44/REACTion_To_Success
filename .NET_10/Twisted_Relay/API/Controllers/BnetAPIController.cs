@@ -21,15 +21,7 @@ namespace Twisted.API.Controllers
         public async Task<string> GetTokenPriceAsync()
         {
             var tokenInformation = await _handler.GetOauth2Token();
-            
             return await _handler.GetTokenPriceAsync(tokenInformation);
-
-
-            //documentation for authorization and jwt set up
-            //https://learn.microsoft.com/en-us/aspnet/core/security/authentication/jwt-authn?view=aspnetcore-10.0
-            //https://learn.microsoft.com/en-us/aspnet/core/security/authentication/configure-jwt-bearer-authentication?view=aspnetcore-10.0
-
-            //need to also figure out how to set up my cors policy because why not. Don't really need it besides on localhost but it would be nice if I deploy it at all.
         }
     }
 }

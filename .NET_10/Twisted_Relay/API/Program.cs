@@ -7,11 +7,10 @@ using System.Reflection.Metadata;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//// Add services to the container.
 builder.Services.AddTwistedServices();
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
 builder.Services.AddOpenApi(options =>
 {
     options.AddDocumentTransformer((document, context, cancellationToken) =>
@@ -46,11 +45,11 @@ using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<TwistedDBContext>();
 
-    //if(!dbContext.Database.CanConnect())
-    //{
-    //    throw new NotImplementedException("Can't connect to the TwistedDB, please check connection string and all other configurations");
-    //}
-    //dbContext.Database.Migrate();
+    if (!dbContext.Database.CanConnect())
+    {
+        throw new NotImplementedException("Can't connect to the TwistedDB, please check connection string and all other configurations");
+    }
+    dbContext.Database.Migrate();
 }
 
 // Configure the HTTP request pipeline.
