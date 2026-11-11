@@ -19,5 +19,20 @@ namespace Twisted.API
             services.AddScoped<IEncryptionHandler, EncryptionHandler>();
             return services;
         }
+
+        public static IServiceCollection AddDefaultAuthentication(this IHostApplicationBuilder builder)
+        {
+            var services = builder.Services;
+            var configuration = builder.Configuration;
+
+            var identitySection = configuration.GetSection("Identity");
+
+            if (!identitySection.Exists())
+            {
+                return services; //no authentication identity field so return the services
+            }
+
+            return services;
+        }
     }
 }

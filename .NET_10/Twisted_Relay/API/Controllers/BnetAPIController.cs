@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Twisted.API.Attributes;
 using Twisted.UseCases.Handlers;
 
 namespace Twisted.API.Controllers
 {
     [ApiController]
+    [ApiKey]
     [Route("[controller]")]
     public class BnetAPIController : ControllerBase
     {
@@ -22,13 +24,10 @@ namespace Twisted.API.Controllers
             
             return await _handler.GetTokenPriceAsync(tokenInformation);
 
-            //I decided not to store this token in the db but instead store it in a static class that holds that information during runtime.
-            //I still would like to know how encryption works so I will still encrypt it just for fun and learn how to decrypt it as well.
-            //Just need to look into how to do that. I will probably make it into it's own handler/functionality so I can call it whenever I need to.
-            //going to make a test controller as well so I can call things when I want to test out my repo without vastly altering the controllers and solution.
 
-            //we should also authorize this endpoint to prevent anyone from calling it and using our api key and token.
-            //very important if not the most important aspect if I plan to deploy this
+            //documentation for authorization and jwt set up
+            //https://learn.microsoft.com/en-us/aspnet/core/security/authentication/jwt-authn?view=aspnetcore-10.0
+            //https://learn.microsoft.com/en-us/aspnet/core/security/authentication/configure-jwt-bearer-authentication?view=aspnetcore-10.0
 
             //need to also figure out how to set up my cors policy because why not. Don't really need it besides on localhost but it would be nice if I deploy it at all.
         }

@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography;
+using Twisted.API.Attributes;
 using Twisted.UseCases.Handlers;
 
 namespace Twisted.API.Controllers
 {
     [ApiController]
+    [ApiKey]
     [Route("[controller]")]
     public class TestController : Controller
     {
@@ -27,20 +30,20 @@ namespace Twisted.API.Controllers
         }
 
         [HttpGet]
-        [Route("Hashing")]
-        public async Task<string> HashingTest()
-        {
-            //need to call the symmetric encryption function
-            var testResult = _encryptHandler.HashTest();
-            return testResult;
-        }
-
-        [HttpGet]
         [Route("AsymmetricEncrypt")]
         public async Task<string> AsymmetricEncrpytionTest()
         {
             //need to call the 
             var testResult = _encryptHandler.AsymmetricEncrpytionTest("This is a test of rsa asymmtetric encryption");
+            return testResult;
+        }
+
+        [HttpGet]
+        [Route("Hashing")]
+        public async Task<string> HashingTest()
+        {
+            //need to call the symmetric encryption function
+            var testResult = _encryptHandler.HashTest();
             return testResult;
         }
     }

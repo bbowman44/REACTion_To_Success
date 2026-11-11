@@ -62,3 +62,8 @@
 
  https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.ipasswordhasher-1?view=aspnetcore-10.0&devlangs=csharp&f1url=%3FappId%3DDev18IDEF1%26l%3DEN-US%26k%3Dk%28Microsoft.AspNetCore.Identity.IPasswordHasher%601%29%3Bk%28DevLang-csharp%29%26rd%3Dtrue
  https://learn.microsoft.com/en-us/aspnet/core/security/data-protection/consumer-apis/password-hashing?view=aspnetcore-10.0
+
+ string key = Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
+ $key = [Convert]::ToBase64String([Security.Cryptography.RandomNumberGenerator]::GetBytes(32)); dotnet user-secrets set "ApiKey" $key --project .NET_10/Twisted_Relay/API; $key
+
+ simple code above that generates a random 32 byte array then converts to base64. Also the method I used above to generate that base64 and insert into the user secrets in one command. I really like that one!
