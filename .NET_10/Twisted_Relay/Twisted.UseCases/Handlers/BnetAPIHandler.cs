@@ -8,18 +8,20 @@ namespace Twisted.UseCases.Handlers
 {
     public class BnetAPIHandler : IBnetAPIHandler
     {
-        private readonly IBnetAPI _repository;
+        private readonly IBnetOAuthAPI _oauthRepository;
+        private readonly IBnetWoWRetailAPI _wowRetailRepository;
         private readonly IBnetAPIServices _services;
         private readonly IConfiguration _configuration;
-        public BnetAPIHandler(IBnetAPI repository, IBnetAPIServices services, IConfiguration configuration)
+        public BnetAPIHandler(IBnetOAuthAPI oauthRepository, IBnetWoWRetailAPI wowRetailRepository, IBnetAPIServices services, IConfiguration configuration)
         {
-            _repository = repository;
+            _oauthRepository = oauthRepository;
+            _wowRetailRepository = wowRetailRepository;
             _services = services;
             _configuration = configuration;
         }
         public async Task<string> GetTokenPriceAsync(BnetTokenDTO tokenInformation)
         {
-            var tokenPrice = await _repository.GetWoWTokenPrice(tokenInformation, "dynamic-us", "en_US");
+            var tokenPrice = await _wowRetailRepository.GetWoWTokenPrice(tokenInformation, "dynamic-us", "en_US");
 
             var formattedTokenString = _services.FormatTokenPrice(tokenPrice);
 
@@ -51,7 +53,7 @@ namespace Twisted.UseCases.Handlers
 
             var form = _services.CreateOAuth2FormBody(clientId, clientSecret);
 
-            return await _repository.GetTokenInformation(form, BnetOAuth2Endpoint);
+            return await _oauthRepository.GetTokenInformation(form, BnetOAuth2Endpoint);
         }
     }
 }
