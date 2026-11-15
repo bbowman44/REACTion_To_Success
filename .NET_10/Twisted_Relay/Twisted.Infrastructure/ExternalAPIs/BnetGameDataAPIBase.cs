@@ -1,3 +1,5 @@
+using System.Net.Http.Headers;
+
 namespace Twisted.Infrastructure.ExternalAPIs
 {
     /// <summary>
@@ -6,13 +8,21 @@ namespace Twisted.Infrastructure.ExternalAPIs
     /// </summary>
     public abstract class BnetGameDataAPIBase
     {
-        protected void BuildInitialRequestObject(HttpClient client, string token)
+        private readonly HttpClient _client;
+
+        public BnetGameDataAPIBase(HttpClient client)
         {
-            string baseURL = "https://us.api.blizzard.com";
-            client.BaseAddress = new Uri(baseURL);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+            _client = client;
+        }
+
+        public Task<HttpResponseMessage> SendAuthorizedAsync(HttpMethod method, string uri, string token, HttpContent? content = null)
+        {
+            var request = new HttpRequestMessage(method, uri)
+            {
+                Content = content
+            };
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            return _client.SendAsync(request);
         }
     }
 }

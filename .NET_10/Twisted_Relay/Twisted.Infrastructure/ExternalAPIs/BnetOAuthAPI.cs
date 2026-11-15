@@ -12,11 +12,16 @@ namespace Twisted.Infrastructure.ExternalAPIs
     /// </summary>
     public class BnetOAuthAPI : IBnetOAuthAPI
     {
+        private readonly HttpClient _client;
+
+        public BnetOAuthAPI(HttpClient client)
+        {
+            _client = client;
+        }
+
         public async Task<BnetTokenDTO> GetTokenInformation(Dictionary<string, string> tokenForm, string accessTokenURL)
         {
-            HttpClient client = new HttpClient();
-
-            HttpResponseMessage response = await client.PostAsync(accessTokenURL, new FormUrlEncodedContent(tokenForm));
+            using HttpResponseMessage response = await _client.PostAsync(accessTokenURL, new FormUrlEncodedContent(tokenForm));
             var jsonContent = await response.Content.ReadAsStringAsync();
 
             BnetTokenModel.RetrivalTime = DateTime.Now; //set the retrival time as soon as possible

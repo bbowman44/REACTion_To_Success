@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Net.Http.Headers;
 using Twisted.Domain.Interfaces;
 using Twisted.Domain.Services;
 using Twisted.Infrastructure.ExternalAPIs;
@@ -12,8 +13,12 @@ namespace Twisted.API
     {
         public static IServiceCollection AddTwistedServices(this IServiceCollection services)
         {
-            services.AddScoped<IBnetOAuthAPI, BnetOAuthAPI>();
-            services.AddScoped<IBnetWoWRetailAPI, BnetWoWRetailAPI>();
+            services.AddHttpClient<IBnetOAuthAPI, BnetOAuthAPI>();
+            services.AddHttpClient<IBnetWoWRetailAPI, BnetWoWRetailAPI>(client =>
+            {
+                client.BaseAddress = new Uri("https://us.api.blizzard.com"); // TODO: I should probably set this endpoint in the appsettings.json but I can do it later
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            });
             services.AddScoped<IBnetAPIServices, BnetAPIServices>();
             services.AddScoped<ICredentialsRepository, CredentialsRepository>();
             services.AddScoped<IBnetAPIHandler, BnetAPIHandler>();
