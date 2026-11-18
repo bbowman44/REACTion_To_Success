@@ -1,8 +1,9 @@
+@use '../../../styles.scss' as styles;
+
 .flex-box-header-parent{
     display: flex;
-    gap: 16px;
-    height: 64px;
-    width: 100%;
+    height: 5vh;
+    background: styles.$dark-surface-one;
 }
 
 .header-list{

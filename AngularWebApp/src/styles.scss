@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+    //These are all the dark mode color themes for the non-accents
+    $dark-background-color: #14111C;
+    $dark-surface-one: #1D1928;
+    $dark-surface-two: #29233A;
+    $dark-border-color: #3A3150;
+    $dark-text-color: #F1ECE2;
+    $dark-muted-text-color: #B3A9C2;
+
+    //light theme non accent colors
+    $light-background-color: #14111C;
+    $light-surface-one: #1D1928;
+    $light-surface-two: #29233A;
+    $light-border-color: #3A3150;
+    $light-text-color: #F1ECE2;
+    $light-muted-text-color: #B3A9C2;
+
+    //Accent colors for buttons, text on accents, and ui elements that are interactive. (shared with reponse colors as well)
+    $primary-button-accent: #F2B84F;
+    $secondary-button-accent: #4FC1B0;
+    $text-on-accent: #14111C;
+
+    // //HTTP Method Colors and Errors
+    $get-method-color: #7FB8F0;
+    $post-method-color: #F2B84B;
+    $put-method-color: #E58A6B;
+    $patch-method-color: #4FC1B0;
+    $delete-method-color: #FF8A80;
+    $badge-outline-color: #3A3150;
